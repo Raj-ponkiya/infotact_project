@@ -1,0 +1,11 @@
+description,priority,assigned_to
+Fix login issue,High,Raj
+Design new homepage,Medium,Jay
+Generate monthly sales report,Low,Raj
+Optimize DB queries,High,Ketu
+Email template redesign,Medium,Rumit
+Refactor payment gateway code,High,Jay
+Add tooltips to forms,Low,Ketu
+Resolve user profile image bug,High,Raj
+Upgrade database schema,Medium,Rumit
+Implement user password reset,High,Ketu

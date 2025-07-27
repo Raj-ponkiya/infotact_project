@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Movie Recommender</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f2f2f2;
+            padding: 40px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type=number] {
+            padding: 10px;
+            width: 70%;
+            font-size: 16px;
+        }
+        input[type=submit] {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .recommendations {
+            margin-top: 20px;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            background: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-left: 5px solid #007bff;
+        }
+        .message {
+            color: red;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Smart Movie Recommender</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="message">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form method="POST" action="/recommend">
+            <input type="number" name="user_id" placeholder="Enter User ID" required>
+            <br>
+            <input type="submit" value="Get Recommendations">
+        </form>
+
+        {% if recommendations %}
+        <div class="recommendations">
+            <h2>Top 10 Picks for User {{ user_id }}</h2>
+            <ul>
+                {% for movie in recommendations %}
+                    <li>{{ movie }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
